@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Lappify",
+  "name": "Laptop Lending and Renting Platform",
   "icons": [
     {
       "src": "favicon.ico",

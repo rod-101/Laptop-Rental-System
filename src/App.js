@@ -1,25 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Home />
     </div>
   );
+}
+
+function Home() {
+    return (
+        <div>
+            <h1>Welcome to Lappify!!</h1>
+            <p>Lending and renting a laptop made easier.</p><br></br>
+            
+            <p>Choose what you want to do.</p>
+            <button onClick={() => <Rent />}>Lend</button>
+            <span>or</span>
+            <button>Rent</button>
+        </div>
+    );
+}
+
+function Rent() {
+    return (
+        <div>
+            <p>This is the rent page.</p>
+        </div>
+    );
 }
 
 export default App;
