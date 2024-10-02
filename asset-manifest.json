@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/https/static/css/main.1d766016.css",
-    "main.js": "/https/static/js/main.76ced7bd.js",
-    "index.html": "/https/index.html",
-    "main.1d766016.css.map": "/https/static/css/main.1d766016.css.map",
-    "main.76ced7bd.js.map": "/https/static/js/main.76ced7bd.js.map"
+    "main.css": "/lappify/static/css/main.1d766016.css",
+    "main.js": "/lappify/static/js/main.76ced7bd.js",
+    "index.html": "/lappify/index.html",
+    "main.1d766016.css.map": "/lappify/static/css/main.1d766016.css.map",
+    "main.76ced7bd.js.map": "/lappify/static/js/main.76ced7bd.js.map"
   },
   "entrypoints": [
     "static/css/main.1d766016.css",
