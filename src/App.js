@@ -1,7 +1,7 @@
 import './App.css';
-// import Welcome from './Welcome.js';
+import Welcome from './Welcome.js';
 // import React, {useState} from 'react';
-import Access from './Access.js';
+// import Access from './Access.js';
 
 function App() {
     return (
