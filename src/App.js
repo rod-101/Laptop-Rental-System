@@ -6,7 +6,7 @@ import Access from './Access.js';
 function App() {
     return (
         <div className="App">
-            <Access />
+            <Welcome />
         </div>
     );
 }
