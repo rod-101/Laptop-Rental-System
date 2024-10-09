@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Laptop-Rental-System/static/css/main.0313735f.css",
-    "main.js": "/Laptop-Rental-System/static/js/main.3b6959c8.js",
+    "main.css": "/Laptop-Rental-System/static/css/main.bf80e6b0.css",
+    "main.js": "/Laptop-Rental-System/static/js/main.1e5ac395.js",
     "index.html": "/Laptop-Rental-System/index.html",
-    "main.0313735f.css.map": "/Laptop-Rental-System/static/css/main.0313735f.css.map",
-    "main.3b6959c8.js.map": "/Laptop-Rental-System/static/js/main.3b6959c8.js.map"
+    "main.bf80e6b0.css.map": "/Laptop-Rental-System/static/css/main.bf80e6b0.css.map",
+    "main.1e5ac395.js.map": "/Laptop-Rental-System/static/js/main.1e5ac395.js.map"
   },
   "entrypoints": [
-    "static/css/main.0313735f.css",
-    "static/js/main.3b6959c8.js"
+    "static/css/main.bf80e6b0.css",
+    "static/js/main.1e5ac395.js"
   ]
 }
