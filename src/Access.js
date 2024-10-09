@@ -15,29 +15,29 @@ export default function Access(props) {
     if(state === 'Login') {
         return (
             <form id="formHeader">
-                <h1>Log in to a {userType} Account</h1>
+                <h1>Log in to a <b>{userType}</b> Account</h1>
     
-                <div id="formBody">
+                <div className="formBody">
                     <input type="text" placeholder="Email" />
                     <input type="text" placeholder="Password" />
                     
-                    <p>or <span onClick={toggleAccess}>Sign up</span></p>
-                    <input type="submit" value={state} />
+                    <p>or <span onClick={toggleAccess} cursor="pointer"><i className="link">Sign up</i></span></p>
+                    <input type="submit" value="SIGN UP" />
                 </div>
             </form>
         );
     } else if(state === 'Signup') {
         return (
             <form id="formHeader">
-                <h1>Create a {userType} Account</h1>
+                <h1>Create a <b>{userType}</b> Account</h1>
     
-                <div id="formBody">
+                <div className="formBody">
                     <input type="text" placeholder="Username" />
                     <input type="text" placeholder="Email" />
                     <input type="text" placeholder="Password" />
                     
-                    <p>or <span onClick={toggleAccess}>Login</span></p>
-                    <input type="submit" value={state} />
+                    <p>or <span onClick={toggleAccess}><i className="link">Log in</i></span></p>
+                    <input type="submit" value="LOGIN" />
                 </div>
             </form>
         );

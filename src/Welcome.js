@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Access from './Access.js'
 
 export default function Welcome() {
+    console.log(process.env.REACT_APP_SSL_CERT)
     const [userType, setUser] = useState(null);
     
     const buttonLender = user => {
@@ -13,13 +14,16 @@ export default function Welcome() {
         <div>
             {
                 userType ? (<Access userType={userType} />) : (
-                    <div>
-                        <h1>Welcome to Lappify!</h1>
-                        <p>Lending and renting a laptop made easy.</p><br></br>
+                    <div id="welcomeContainer">
+                        <h2 id="welcomeHeader"><span id='welcomeTo'>Welcome to</span> Lappify!</h2>
                         
-                        <p>Choose what you want to do.</p>
-                        <button value="lender" onClick={buttonLender}>Lend</button> <span>or </span>  
-                        <button value="renter" onClick={buttonRenter}>Rent</button>
+                        <p id="welcomeCaption">Lending and renting a laptop made easy.</p>
+                        
+                        <div id="welcomeBody">
+                            <p>Choose what you want to do.</p>
+                            <button className="welcomeButtons" value="lender" onClick={buttonLender}>Lend</button> <span id='or'>or</span>
+                            <button className="welcomeButtons" value="renter" onClick={buttonRenter}>Rent</button>
+                        </div>
                     </div>
                 )
             }
