@@ -21,7 +21,6 @@ const client = new pg.Client(config);
 client.connect(function (err) {
     if (err) {
         throw err.message;
-        return
     }
     console.log("Database connection established.");
 });
