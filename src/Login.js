@@ -1,5 +1,9 @@
 import React, {useState} from 'react'
+<<<<<<< HEAD
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+=======
+const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:3001';
+>>>>>>> cb6e79f6aed67f3fecaafd977bcf3be31671fd77
 
 export default function Login(props) {
 
