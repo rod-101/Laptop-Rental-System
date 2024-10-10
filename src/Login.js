@@ -1,7 +1,9 @@
 import React, {useState} from 'react'
-const SERVER_URL = 'https://lappify-server.onrender.com' || 'http://localhost:3001';
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 export default function Login(props) {
+
+    const [loginMessage, setLoginMessage] = useState("")
     
     //handle user input
     const [input, setInput] = useState({
@@ -21,7 +23,8 @@ export default function Login(props) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(SERVER_URL);
+        
+        
         try {
             const response = await fetch(`${SERVER_URL}/login`, {
                 method: "POST",
@@ -31,19 +34,24 @@ export default function Login(props) {
                 body: JSON.stringify(input)
             })
 
-            const result = await response.json();
-            console.log('Form submitted: ' + result);
-
-            setUserData(result);
+            if(response.ok) {
+                const result = await response.json();
+                setUserData(result);
+                setLoginMessage(`Welcome, ${result.username}!`)
+            } else {
+                setUserData(null);
+                setLoginMessage('Invalid email or password.');
+            }
         } catch (err) {
-            console.error("Error submitting form: " + err);
+            console.log('Error submitting form: ' + err)
         }
     }
+
 
     return (
         <form id="formHeader" onSubmit={handleSubmit}>
             <h1>Log in to a <b>{props.userType}</b> Account</h1>
-            {userData && <p>Welcome, {userData.email}!</p>}
+            {userData ? loginMessage : loginMessage}
             <div className="formBody">
                 <input type="text" name="email" placeholder="Email" onChange={handleChange}/>
                 <input type="password" name="password" placeholder="Password" onChange={handleChange}/>

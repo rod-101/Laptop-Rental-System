@@ -30,6 +30,13 @@ app.post('/login', (req, res) => {
     })
 })
 
+app.post('/signup', (req, res) => {
+    const {username, email, password, user_type} = req.body;
+    const queryString = `INSERT INTO users (username, email, password, user_type)`
+
+
+})
+
 app.get('/data/:id', (req, res) => {
     const {id} = req.params;
     dbclient.query(`SELECT * FROM users WHERE user_id = ${id}`, (err, result) => {
