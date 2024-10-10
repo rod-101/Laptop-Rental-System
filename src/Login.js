@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
+const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:3001';
 
 export default function Login(props) {
+    
     //handle user input
     const [input, setInput] = useState({
         email: '',
@@ -19,9 +21,9 @@ export default function Login(props) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        console.log(SERVER_URL);
         try {
-            const response = await fetch('/login', {
+            const response = await fetch(`${SERVER_URL}/login`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
