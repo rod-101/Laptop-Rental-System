@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:3001';
+const SERVER_URL = 'https://lappify-server.onrender.com' || 'http://localhost:3001';
 
 export default function Login(props) {
     
