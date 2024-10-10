@@ -21,7 +21,7 @@ export default function Login(props) {
         e.preventDefault();
 
         try {
-            const response = await fetch('SERVER_URL/login', {
+            const response = await fetch('/login', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
