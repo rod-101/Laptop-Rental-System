@@ -32,9 +32,15 @@ app.post('/login', (req, res) => {
 
 app.post('/signup', (req, res) => {
     const {username, email, password, user_type} = req.body;
-    const queryString = `INSERT INTO users (username, email, password, user_type)`
+    const queryString = `INSERT INTO users (username, email, password, user_type) VALUES ($1, $2, $3, $4) RETURNING user_id, user_type`
 
-
+    dbclient.query(queryString, [username, email, password, user_type], (err, result) => {
+        if(err) {
+            console.error(err);
+            return res.status(500).send('Error querying the database.')
+        }
+        res.send(result)
+    })
 })
 
 app.get('/data/:id', (req, res) => {

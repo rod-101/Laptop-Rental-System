@@ -22,7 +22,7 @@
     width: 250px;
     margin:auto;
     row-gap: 10px;
-} .formBody > input[type=text], input[type=password]{
+} .formBody > input[type=text], input[type=password], input[type=email]{
     width: 247px;
     height: 39px;
     border-radius: 10px;
