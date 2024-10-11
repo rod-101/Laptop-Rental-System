@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-const SERVER_URL =  process.env.REACT_APP_SERVER_URL; //'http://localhost:3001' //push first before changing to localhost:3001
+const SERVER_URL = process.env.REACT_APP_SERVER_URL; //'http://localhost:3001' 
 
 export default function Signup(props) {
     //use when showing users the error when form is submitted

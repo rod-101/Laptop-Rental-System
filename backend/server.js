@@ -17,15 +17,13 @@ app.post('/login', (req, res) => {
     const queryString = `SELECT * FROM users WHERE email = $1 AND password = $2`
     dbclient.query(queryString, [email, password], (err, result) => {
         if (err) {
-            console.error(err);
-            return res.status(500).send('Error querying the database');
+            return res.status(500).send('Internal Server Error.');
         }
 
         if (result.rows.length > 0) {
-            console.log("Got the data", result.rows[0]);
-            return res.json(result.rows[0]); // Return the matched user data as JSON
+            return res.json(result.rows[0]); //sends a json formatted response back to client
         } else {
-            return res.status(401).send('Invalid email or password');
+            return res.status(401).send('Access denied.');
         }
     })
 })
