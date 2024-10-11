@@ -12,10 +12,10 @@ app.use(cors())
 
 
 app.post('/login', (req, res) => {
-    const { email, password } = req.body;
+    const { email, password, user_type } = req.body;
     
-    const queryString = `SELECT * FROM users WHERE email = $1 AND password = $2`
-    dbclient.query(queryString, [email, password], (err, result) => {
+    const queryString = `SELECT * FROM users WHERE email = $1 AND password = $2 AND user_type = $3`
+    dbclient.query(queryString, [email, password, user_type], (err, result) => {
         if (err) {
             return res.status(500).send('Internal Server Error.');
         }

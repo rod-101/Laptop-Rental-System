@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import LenderProfile from './LenderProfile'
 import RenterProfile from './RenterProfile'
-const SERVER_URL = process.env.REACT_APP_SERVER_URL; //'http://localhost:3001'
+const SERVER_URL = 'http://localhost:3001' //process.env.REACT_APP_SERVER_URL;
 
 
 export default function Login(props) {
@@ -12,8 +12,9 @@ export default function Login(props) {
     
     //handle user input
     const [input, setInput] = useState({
-        email: '',
-        password: ''
+        email: null,
+        password: null,
+        user_type: props.userType
     })
 
     const handleChange = (e) => {
