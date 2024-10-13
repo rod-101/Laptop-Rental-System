@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import LenderProfile from './LenderProfile'
 import RenterProfile from './RenterProfile'
-const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+const SERVER_URL = 'http://localhost:3001' //process.env.REACT_APP_SERVER_URL;
 
 
 export default function Login(props) {
@@ -26,6 +26,7 @@ export default function Login(props) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoginMessage('Loading...')
         try {
             const response = await fetch(`${SERVER_URL}/login`, {
                 method: "POST",
