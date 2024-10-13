@@ -24,8 +24,39 @@ export default function Signup(props) {
         })
     }
 
+    const emailIsAvailable = async (e) => {
+        try {
+            const email = input.email;
+            const response = await fetch(`${SERVER_URL}/emailIsAvailable?email=${email}`, {
+                method: "GET",
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+
+            if(response.ok) {
+                const message = await response.text();
+                setSignupMessage(message);
+                return true;
+            } else {
+                const message = await response.text();
+                setSignupMessage(message);
+                return false;
+            }
+        } catch(err) {
+            console.log('Error' + err)
+        }
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setSignupMessage('Loading...')
+
+        const isAvailable = await emailIsAvailable();
+        if(isAvailable === false) {
+            return
+        }
+
         try {
             const response = await fetch(`${SERVER_URL}/signup`, {
                 method: "POST",
@@ -38,7 +69,7 @@ export default function Signup(props) {
             if(response.ok) {
                 const result = await response.json(); //string to json
                 setUserData(result);
-                setSignupMessage(`Data posted.`)
+                setSignupMessage(`Account created. Please log in.`)
             } else {
                 setUserData(null);
                 console.log(response)
@@ -50,6 +81,10 @@ export default function Signup(props) {
         }
     }
     
+
+
+
+
     return (
         <form id="formHeader" onSubmit={handleSubmit}>
             <h1>Create a <b>{props.userType}</b> Account</h1>

@@ -10,14 +10,15 @@ app.use(cors())
 
 
 
-
+//for Login
 app.post('/login', (req, res) => {
     const { email, password, user_type } = req.body;
     
     const queryString = `SELECT * FROM users WHERE email = $1 AND password = $2 AND user_type = $3`
     dbclient.query(queryString, [email, password, user_type], (err, result) => {
         if (err) {
-            return res.status(500).send('Internal Server Error.');
+            console.log(err)
+            return res.status(500).send('Error querying the database.');
         }
 
         if (result.rows.length > 0) {
@@ -28,6 +29,7 @@ app.post('/login', (req, res) => {
     })
 })
 
+//for Signup
 app.post('/signup', (req, res) => {
     const {username, email, password, user_type} = req.body;
     const queryString = `INSERT INTO users (username, email, password, user_type) VALUES ($1, $2, $3, $4) RETURNING user_id, user_type`
@@ -38,6 +40,28 @@ app.post('/signup', (req, res) => {
             return res.status(500).send('Error querying the database.')
         }
         res.send(result)
+    })
+})
+
+app.get('/emailIsAvailable', (req, res) => {
+    const {email} = req.query
+
+    if(!email) {
+        return res.status(400).send('Email is required');
+    }
+
+    const queryString = 'SELECT * FROM users WHERE email = $1'
+    dbclient.query(queryString, [email], (err, result) => {
+        if (err) {
+            console.log(err)
+            return res.status(500).send('Error querying the database')
+        }
+
+        if(result.rows.length > 0) {
+            return res.status(409).send('Email already exists.')
+        } else {
+            return res.status(200).send('Email is available.')
+        }
     })
 })
 
