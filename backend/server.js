@@ -32,23 +32,21 @@ app.post('/login', (req, res) => {
 //for Signup
 app.post('/signup', (req, res) => {
     const {username, email, password, user_type} = req.body;
-    const queryString = `INSERT INTO users (username, email, password, user_type) VALUES ($1, $2, $3, $4) RETURNING user_id, user_type`
+    const queryString = `INSERT INTO users (username, email, password, user_type) VALUES ($1, $2, $3, $4) RETURNING user_id`
 
     dbclient.query(queryString, [username, email, password, user_type], (err, result) => {
         if(err) {
             console.error(err);
             return res.status(500).send('Error querying the database.')
         }
+
+        //returns user_id so we know what type of account to display
         res.send(result)
     })
 })
 
 app.get('/emailIsAvailable', (req, res) => {
     const {email} = req.query
-
-    if(!email) {
-        return res.status(400).send('Email is required');
-    }
 
     const queryString = 'SELECT * FROM users WHERE email = $1'
     dbclient.query(queryString, [email], (err, result) => {

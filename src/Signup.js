@@ -1,20 +1,33 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
+import { useEffect } from 'react'
 const SERVER_URL = process.env.REACT_APP_SERVER_URL; 
 
 export default function Signup(props) {
-    //use when showing users the error when form is submitted
-    const [signupMessage, setSignupMessage] = useState(null) 
+    const user_type = props.userType
+    const [signupMessage, setSignupMessage] = useState(null) //informs the user on the state of form submission 
+    const usernameRef = useRef(null)
+    const emailRef = useRef(null)
+    const passwordRef = useRef(null)
+
     
+    useEffect(() => {
+        if(signupMessage) {
+            console.log(signupMessage)
+        }
+    }, [signupMessage])
+
+
     //handle user input
     const [input, setInput] = useState({
         username: null,
         email: null,
         password: null,
-        user_type: props.userType
+        user_type: user_type
     })
 
+
     //handle server response
-    const [userData, setUserData] = useState(null)
+    const [userData, setUserData] = useState(null) //userData holds user_id
 
     //tracks changes in input
     const handleInputChange = (e) => {
@@ -23,6 +36,8 @@ export default function Signup(props) {
             [e.target.name]: e.target.value
         })
     }
+
+
 
     const emailIsAvailable = async (e) => {
         try {
@@ -48,6 +63,8 @@ export default function Signup(props) {
         }
     }
 
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setSignupMessage('Loading...')
@@ -70,9 +87,17 @@ export default function Signup(props) {
                 const result = await response.json(); //string to json
                 setUserData(result);
                 setSignupMessage(`Account created. Please log in.`)
+                setInput({
+                    username: "",
+                    email: "",
+                    password: "",
+                    user_type: user_type
+                })
+                usernameRef.current.value = ""
+                emailRef.current.value = ""
+                passwordRef.current.value = ""
             } else {
                 setUserData(null);
-                console.log(response)
                 setSignupMessage(response.statusText);
             }
         } catch (err) {
@@ -80,8 +105,6 @@ export default function Signup(props) {
             console.log(errMessage)
         }
     }
-    
-
 
 
 
@@ -90,9 +113,9 @@ export default function Signup(props) {
             <h1>Create a <b>{props.userType}</b> Account</h1>
             {userData ? signupMessage : signupMessage}
             <div className="formBody" onSubmit={props.handleSubmit}>
-                <input type="text" name="username" placeholder="Username" onChange={handleInputChange} />
-                <input type="email" name="email" placeholder="Email" onChange={handleInputChange} />
-                <input type="password" name="password" placeholder="Password" onChange={handleInputChange} />
+                <input type="text" ref={usernameRef} name="username" placeholder="Username" onChange={handleInputChange} />
+                <input type="email" ref={emailRef} name="email" placeholder="Email" onChange={handleInputChange} />
+                <input type="password" ref={passwordRef} name="password" placeholder="Password" onChange={handleInputChange} />
                 
                 <p>or <span onClick={props.toggle}><i className="link">Log in</i></span></p>
                 <input type="submit" value="SIGN UP" />

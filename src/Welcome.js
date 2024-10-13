@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import Auth from './Auth.js'
 
 export default function Welcome() {
-    console.log(process.env.REACT_APP_SSL_CERT)
     const [userType, setUser] = useState(null);
     
     const buttonLender = user => setUser('Lender')
