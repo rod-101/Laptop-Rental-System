@@ -8,6 +8,7 @@ export default function Login(props) {
 
     const [loginMessage, setLoginMessage] = useState("")
     const [userData, setUserData] = useState({}) //handle server response
+    const [profile, setProfile] = useState(null)
     
     //handle user input
     const [input, setInput] = useState({
@@ -22,6 +23,8 @@ export default function Login(props) {
             [e.target.name]: e.target.value
         })
     }
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -39,6 +42,7 @@ export default function Login(props) {
                 const result = await response.json(); //extract the actual body of response and convers to js object
                 setLoginMessage(`Login successful!`)
                 setUserData(result)
+                setProfile(result.user_type)
             } else {
                 setUserData(null);
                 setLoginMessage("Email or password is incorrect.");
@@ -51,7 +55,9 @@ export default function Login(props) {
     }
 
 
-    if(userData.user_type) {
+
+
+    if(profile) {
         return (
             <UserDataContext.Provider value={userData}>
                 <Profile />
