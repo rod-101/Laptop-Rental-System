@@ -1,13 +1,12 @@
 import React, {useState} from 'react'
-import LenderProfile from './LenderProfile'
-import RenterProfile from './RenterProfile'
+import Profile from './Profile'
 const SERVER_URL = 'http://localhost:3001' //process.env.REACT_APP_SERVER_URL;
 
+export const UserDataContext = React.createContext()
 
 export default function Login(props) {
 
     const [loginMessage, setLoginMessage] = useState("")
-    const [profile, setProfile] = useState(null);
     const [userData, setUserData] = useState({}) //handle server response
     
     //handle user input
@@ -40,7 +39,6 @@ export default function Login(props) {
                 const result = await response.json(); //extract the actual body of response and convers to js object
                 setLoginMessage(`Login successful!`)
                 setUserData(result)
-                setProfile(result.user_type) //set profile to lender or renter
             } else {
                 setUserData(null);
                 setLoginMessage("Email or password is incorrect.");
@@ -53,13 +51,12 @@ export default function Login(props) {
     }
 
 
-    if(profile) {
-        if(profile === 'Renter'){
-            return (
-                <RenterProfile username={userData.username} user_id={userData.user_id} user_type={userData.user_type} />
-            )
-        }
-        return <LenderProfile username={userData.username} user_id={userData.user_id} user_type={userData.user_type}/>
+    if(userData.user_type) {
+        return (
+            <UserDataContext.Provider value={userData}>
+                <Profile />
+            </UserDataContext.Provider>
+        )
     } else {
         return (
             <form id="formHeader" onSubmit={handleSubmit}>

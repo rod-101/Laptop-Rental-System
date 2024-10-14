@@ -5,7 +5,7 @@ export default function ProductCard(props) {
     return (
         <>
             <div>
-                <image alt="image"></image>
+                {/* <image alt="image"></image> */}
                 <div>{brand}</div>
                 <div>{pcName}</div>
             </div>
