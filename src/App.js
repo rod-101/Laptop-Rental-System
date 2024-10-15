@@ -17,6 +17,8 @@ function App() {
                     <Route path='/profile' element={<Profile/>} >
                         <Route path="lender" element={<LenderProfile/>}>
                             <Route path='add-device' element={<AddDevicePage/>} />
+                            <Route path='requests'/>
+                            <Route path='devices'/>
                         </Route>
                         <Route path="renter" element={<RenterProfile/>}>
                             {/* RenterProfile components here */}

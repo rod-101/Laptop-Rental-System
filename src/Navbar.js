@@ -1,5 +1,6 @@
 // import React, { useContext } from "react"
 // import { UserDataContext } from "./Login"
+import { Link } from "react-router-dom"
 
 export default function Navbar() {
     // const userData = useContext(UserDataContext)
@@ -7,9 +8,15 @@ export default function Navbar() {
     return (
         <>
             <div id="navbar">
-                <div>Profile</div>
-                <div>Requests</div>
-                <div>Devices</div>
+                <Link to="/profile">
+                    <div>Profile</div>
+                </Link>
+                <Link to="requests">
+                    <div>Requests</div>
+                </Link>
+                <Link to="/devices">
+                    <div>Devices</div>
+                </Link>
             </div>
         </>
     )

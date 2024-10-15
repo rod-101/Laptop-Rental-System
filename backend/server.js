@@ -45,6 +45,21 @@ app.post('/signup', (req, res) => {
     })
 })
 
+
+app.post('/add-device', (req, res) => {
+    const {device_name, specs, condition, availability, apps, issues, terms_conditions} = req.body
+
+    const queryString = 'INSERT INTO devices (device_name, specs, condition, availability, apps, issues, terms_conditions) VALUES ($1, $2, $3, $4, $5, $6, $7)'
+    dbclient.query(queryString, [device_name, specs, condition, availability, apps, issues, terms_conditions], (err, result) => {
+        if(err){
+            console.log(err)
+            return res.status(500).send('Error querying the database.')
+        } 
+        return res.send(result)
+    })
+})
+
+
 app.get('/emailIsAvailable', (req, res) => {
     const {email} = req.query
 
@@ -63,20 +78,40 @@ app.get('/emailIsAvailable', (req, res) => {
     })
 })
 
-app.post('/add-device', (req, res) => {
-    const {device_name, specs, condition, availability, apps, issues, terms_conditions} = req.body
 
-    const queryString = 'INSERT INTO devices (device_name, specs, condition, availability, apps, issues, terms_conditions) VALUES ($1, $2, $3, $4, $5, $6, $7)'
-    dbclient.query(queryString, [device_name, specs, condition, availability, apps, issues, terms_conditions], (err, result) => {
+app.post('/count-devices/:owner', (req, res) => {
+    const owner = req.params.owner;
+    const queryString = `SELECT device_id FROM devices WHERE "owner" = $1`
+    dbclient.query(queryString, [owner], (err, result) => {
         if(err){
             console.log(err)
-            return res.status(500).send('Error querying the database.')
-        } 
-        return res.send(result)
+            return res.status(500).send("Error querying the database.")
+        }
+        if (result.rows.length > 0) {
+            return res.send(result); //sends a json formatted response back to client
+        } else {
+            return res.status(401).send('There are no devices.');
+        }
+        
     })
 })
 
-
+app.post('/count-requests/:owner', (req, res) => {
+    const owner = req.params.owner;
+    const queryString = `SELECT * FROM requests WHERE "owner" = $1`
+    dbclient.query(queryString, [owner], (err, result) => {
+        if(err){
+            console.log(err)
+            return res.status(500).send("Error querying the database.")
+        }
+        if (result.rows.length > 0) {
+            return res.send(result); //sends a json formatted response back to client
+        } else {
+            return res.status(401).send('There are no devices.');
+        }
+        
+    })
+})
 app.get('/data/:id', (req, res) => {
     const {id} = req.params;
     dbclient.query(`SELECT * FROM users WHERE user_id = ${id}`, (err, result) => {
