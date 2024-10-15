@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import Profile from './Profile'
-const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+const SERVER_URL = 'http://localhost:3001' //process.env.REACT_APP_SERVER_URL;
 
 export const UserDataContext = React.createContext()
 
