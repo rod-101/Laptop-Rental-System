@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import Profile from './Profile'
-const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+const SERVER_URL = 'http://localhost:3001' //process.env.REACT_APP_SERVER_URL;
 
 export const UserDataContext = React.createContext()
 
@@ -69,8 +69,8 @@ export default function Login(props) {
                 <h1>Log in to a <b>{props.userType}</b> Account</h1>
                 {loginMessage}
                 <div className="formBody">
-                    <input type="text" name="email" placeholder="Email" onChange={handleChange}/>
-                    <input type="password" name="password" placeholder="Password" onChange={handleChange}/>
+                    <input type="text" name="email" placeholder="Email" onChange={handleChange} required/>
+                    <input type="password" name="password" placeholder="Password" onChange={handleChange} required/>
                     
                     <p>or <span onClick={props.toggle} cursor="pointer"><i className="link">Sign up</i></span></p>
                     <input type="submit" value="LOGIN" />

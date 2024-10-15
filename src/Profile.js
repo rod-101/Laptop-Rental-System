@@ -6,7 +6,6 @@ import RenterProfile from "./RenterProfile";
 export default function Profile() {
     const userDataRaw = useContext(UserDataContext);    
     const [userData, setUserData] = useState(null);
-
     // Effect to set userData only once when userDataRaw changes
     useEffect(() => {
         if (userDataRaw) {

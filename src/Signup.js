@@ -1,6 +1,6 @@
 import React, {useState, useRef} from 'react'
 import { useEffect } from 'react'
-const SERVER_URL = process.env.REACT_APP_SERVER_URL; 
+const SERVER_URL = 'http://localhost:3001' //process.env.REACT_APP_SERVER_URL; 
 
 export default function Signup(props) {
     const user_type = props.userType

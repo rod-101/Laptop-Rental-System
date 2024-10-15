@@ -2,6 +2,9 @@ import './App.css';
 import Welcome from './Welcome.js';
 import Profile from './Profile'
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import AddDevicePage from './AddDevicePage.js';
+import LenderProfile from './LenderProfile.js';
+import RenterProfile from './RenterProfile.js';
 
 function App() {
     return (
@@ -10,7 +13,15 @@ function App() {
                 <Routes>
                     <Route index element={<Welcome/>} />
                     <Route path='/home' element={<Welcome/>} />
-                    <Route path='/profile' element={<Profile/>} />
+                    <Route path='/profile' element={<Profile/>} >
+                        <Route path="lender" element={<LenderProfile/>}>
+                            <Route path='add-device' element={<AddDevicePage/>} />
+                        </Route>
+                        <Route path="renter" element={<RenterProfile/>}>
+
+                        </Route>
+                    </Route>
+                    
                 </Routes>
             </BrowserRouter>
         </div>

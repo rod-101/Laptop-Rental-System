@@ -63,6 +63,20 @@ app.get('/emailIsAvailable', (req, res) => {
     })
 })
 
+app.post('/add-device', (req, res) => {
+    const {device_name, specs, condition, availability, apps, issues, terms_conditions} = req.body
+
+    const queryString = 'INSERT INTO devices (device_name, specs, condition, availability, apps, issues, terms_conditions) VALUES ($1, $2, $3, $4, $5, $6, $7)'
+    dbclient.query(queryString, [device_name, specs, condition, availability, apps, issues, terms_conditions], (err, result) => {
+        if(err){
+            console.log(err)
+            return res.status(500).send('Error querying the database.')
+        } 
+        return res.send(result)
+    })
+})
+
+
 app.get('/data/:id', (req, res) => {
     const {id} = req.params;
     dbclient.query(`SELECT * FROM users WHERE user_id = ${id}`, (err, result) => {
