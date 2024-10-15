@@ -13,12 +13,13 @@ function App() {
                 <Routes>
                     <Route index element={<Welcome/>} />
                     <Route path='/home' element={<Welcome/>} />
+
                     <Route path='/profile' element={<Profile/>} >
                         <Route path="lender" element={<LenderProfile/>}>
                             <Route path='add-device' element={<AddDevicePage/>} />
                         </Route>
                         <Route path="renter" element={<RenterProfile/>}>
-
+                            {/* RenterProfile components here */}
                         </Route>
                     </Route>
                     
