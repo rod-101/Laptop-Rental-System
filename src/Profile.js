@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect} from "react";
+import React, { useContext, useEffect} from "react";
 import { UserContext } from "./UserContext";
 import LenderProfile from "./LenderProfile";
 import RenterProfile from "./RenterProfile";
@@ -9,7 +9,7 @@ export default function Profile() {
     const navigate = useNavigate()
     useEffect(() => {
         navigate('/profile')
-    }, [userData])
+    }, [navigate])
     // If userData isn't loaded yet, don't render profiles
     if (!userData) {
         return <div>Loading... from profile</div>;

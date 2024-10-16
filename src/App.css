@@ -179,7 +179,7 @@
     right: 0px;
     border-bottom-left-radius: 20px;
     
-} #navbar > div {
+} #navbar div {
     color: white;
     display: flex;
     justify-content: center;
@@ -187,6 +187,7 @@
     width: 5rem;
     height: 2rem;
     font-size: 1.3rem;
+    text-decoration: none;
 }
 
 #container-lender {
@@ -201,9 +202,14 @@
     height: 540px;
     color: white;
 }
-.profile-photo{
+.profile-photo-container{
     width: 287px;
     height: 399px;
+    border: 1px solid white;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #lender-info {
     height: 25rem;

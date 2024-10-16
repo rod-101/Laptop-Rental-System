@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect} from "react"
+import React, { useState, useContext, useEffect, useCallback} from "react"
 import { UserContext } from "./UserContext"
 import { useNavigate } from 'react-router-dom'
 const SERVER_URL = 'http://localhost:3001'
@@ -14,7 +14,7 @@ export default function ProfileComponent() {
     const user_type = userData.user_type;
     const owner = userData.user_id;
     
-    const getRequestsCount = async () => {
+    const getRequestsCount = useCallback(async () => {
         try{
             const response = await fetch(`${SERVER_URL}/count-requests/${owner}`, {
                 method: "POST"
@@ -29,10 +29,9 @@ export default function ProfileComponent() {
         } catch(err) {
             console.log(err);
         }    
-    }
-
+    }, [owner])
     
-    const getDevicesCount = async () => {
+    const getDevicesCount = useCallback(async () => {
         try{
             const response = await fetch(`${SERVER_URL}/count-devices/${owner}`, {
                 method: "POST"
@@ -47,22 +46,22 @@ export default function ProfileComponent() {
         } catch(err) {
             console.log(err);
         }
-    }
+    }, [owner])
 
 
     useEffect(() => {
         getDevicesCount()    
         getRequestsCount()
         navigate('profile/lender/me')
-    }, [userData])
+    }, [getDevicesCount, getRequestsCount, navigate])
 
     return (
         <div id="container-lender">
-            <div>
-                <img className="profile-photo" src={"./images/me.jpg"} alt="Beth.jpg"/>
+            <div className="profile-photo-container">
+                <img className="profile-photo" src={"./images/me.jpg"} alt={`${username}.jpg"`} />
             </div>
             <div id="lender-info">
-                <h1>{username} {owner} ({user_type})</h1>
+                <h1>{username} ({user_type})</h1>
                 <p>{email}</p>
                 <p>{devicesCount} Devices</p>
                 <p>{requestsCount} Requests</p>

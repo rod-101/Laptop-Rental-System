@@ -1,42 +1,29 @@
 // import React, {useState} from 'react'
 // import ProductCard from './ProductCard'
-import React, { useState, useContext, useEffect} from "react"
-import AddDevicePage from './AddDevicePage';
+import React, {useEffect} from "react"
 import Navbar from "./Navbar";
 import ProfileComponent from "./ProfileComponent";
-import { Outlet, useNavigate } from 'react-router-dom'
-import { UserContext } from './UserContext'
+import { useNavigate } from 'react-router-dom'
 
 
 export default function LenderProfile() {
-    const profile = 'LenderProfile'
-    const addDevice = 'AddDevicePage'
     const navigate = useNavigate()
-    const { userData } = useContext(UserContext)
-
-    const [page, setPage] = useState('LenderProfile');
     
 
     useEffect(() => {
         navigate('/profile/lender')
-    }, [userData])
+    }, [navigate])
 
-    const handleClick = () => {
-        setPage('AddDevicePage')
-    }
+    // const handleClick = () => {
+    //     setPage('AddDevicePage')
+    // }
     
-    if(page === addDevice) {
-        return(
-            <AddDevicePage/>
-        )
-    } else if(page === profile) {
         
-        return (
-            <>
-                <Navbar/>
-                <ProfileComponent />
-            </>
-        )
-    }
+    return (
+        <>
+            <Navbar/>
+            <ProfileComponent />
+        </>
+    )
     
 }
