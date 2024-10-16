@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 import Navbar from "./Navbar";
 import DeviceCard from "./DeviceCard";
+const SERVER_URL = 'http://localhost:3001' || process.env.REACT_APP_SERVER_URL
 
 export default function Devices() {
     const { userData } = useContext(UserContext)
@@ -16,7 +17,7 @@ export default function Devices() {
 
     const getDevices = async () => {
         try{
-            const response = await fetch(`/my-devices`, {
+            const response = await fetch(`${SERVER_URL}/my-devices`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'appliation/json'
