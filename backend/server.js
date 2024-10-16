@@ -87,10 +87,11 @@ app.post('/count-devices/:owner', (req, res) => {
             console.log(err)
             return res.status(500).send("Error querying the database.")
         }
+
         if (result.rows.length > 0) {
             return res.send(result); //sends a json formatted response back to client
         } else {
-            return res.status(401).send('There are no devices.');
+            return res.send(result);
         }
         
     })

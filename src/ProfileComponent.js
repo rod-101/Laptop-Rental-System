@@ -41,7 +41,7 @@ export default function ProfileComponent() {
             })
 
             if(response.ok) {
-                const result = await response.json()
+                const result = await response.json() //json to js object
                 setDevicesCount(result.rowCount)
             } else {
                 console.log(response.statusText)

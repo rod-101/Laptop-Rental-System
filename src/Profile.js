@@ -12,6 +12,7 @@ export default function Profile() {
     useEffect(() => {
         navigate('/profile')
     }, [navigate])
+    
     // If userData isn't loaded yet, don't render profiles
     if (!userData) {
         return <div>Loading... from profile</div>;
@@ -23,7 +24,5 @@ export default function Profile() {
         return <LenderProfile />
     } else if (userData.user_type === "Renter") {
         return <RenterProfile />;
-    } else {
-        return <div>Invalid user type</div>;
     }
 }
