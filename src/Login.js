@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react'
 import Profile from './Profile'
 import { UserContext } from './UserContext'
-const SERVER_URL = 'http://localhost:3001' //process.env.REACT_APP_SERVER_URL;
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 export default function Login(props) {
     const { setUserData } = useContext(UserContext)
