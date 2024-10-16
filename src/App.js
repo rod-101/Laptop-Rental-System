@@ -3,8 +3,10 @@ import Welcome from './Welcome.js';
 import Profile from './Profile'
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import AddDevicePage from './AddDevicePage.js';
+import Devices from './Devices.js';
 import LenderProfile from './LenderProfile.js';
 import RenterProfile from './RenterProfile.js';
+import ProfileComponent from './ProfileComponent.js';
 
 function App() {
     return (
@@ -16,9 +18,9 @@ function App() {
                     <Route path='/home' element={<Welcome/>} />
                     <Route path='/profile' element={<Profile/>} >
                         <Route path="lender" element={<LenderProfile/>}>
-                            <Route path='add-device' element={<AddDevicePage/>} />
+                            <Route path='me' element={<ProfileComponent/>} />
+                            <Route path='devices' element={<Devices />}/>
                             <Route path='requests'/>
-                            <Route path='devices'/>
                         </Route>
                         <Route path="renter" element={<RenterProfile/>}>
                             {/* RenterProfile components here */}

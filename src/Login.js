@@ -1,11 +1,10 @@
 import React, {useContext, useState} from 'react'
 import Profile from './Profile'
 import { UserContext } from './UserContext'
-const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+const SERVER_URL = 'http://localhost:3001' //process.env.REACT_APP_SERVER_URL;
 
 export default function Login(props) {
     const { setUserData } = useContext(UserContext)
-
 
     const [loginMessage, setLoginMessage] = useState("")
     const [profile, setProfile] = useState(null)
@@ -46,15 +45,12 @@ export default function Login(props) {
             } else {
                 setUserData(null);
                 setLoginMessage("Email or password is incorrect.");
-                
             }
         } catch (err) {
             setLoginMessage('Something went wrong. Please check console for more info.')
             console.log('Error submitting form: ' + err)
         }
     }
-
-
 
 
     if(profile) {

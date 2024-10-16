@@ -14,6 +14,7 @@ export default function ProfileComponent() {
     const user_type = userData.user_type;
     const owner = userData.user_id;
     
+    
     const getRequestsCount = useCallback(async () => {
         try{
             const response = await fetch(`${SERVER_URL}/count-requests/${owner}`, {
@@ -30,6 +31,8 @@ export default function ProfileComponent() {
             console.log(err);
         }    
     }, [owner])
+
+
     
     const getDevicesCount = useCallback(async () => {
         try{
@@ -49,16 +52,17 @@ export default function ProfileComponent() {
     }, [owner])
 
 
+
     useEffect(() => {
         getDevicesCount()    
         getRequestsCount()
-        navigate('profile/lender/me')
+        navigate('/me')
     }, [getDevicesCount, getRequestsCount, navigate])
 
     return (
         <div id="container-lender">
             <div className="profile-photo-container">
-                <img className="profile-photo" src={"./images/me.jpg"} alt={`${username}.jpg"`} />
+                <img className="profile-photo" src={"./images/me.jpg"} alt={`${username}.jpg`} />
             </div>
             <div id="lender-info">
                 <h1>{username} ({user_type})</h1>

@@ -11,7 +11,7 @@ export default function Navbar() {
                 <Link to="/profile">
                     <div>Profile</div>
                 </Link>
-                <Link to="requests">
+                <Link to="/requests">
                     <div>Requests</div>
                 </Link>
                 <Link to="/devices">

@@ -1,7 +1,19 @@
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import Navbar from "./Navbar";
+
 export default function Devices() {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        navigate('/profile/devices')
+    })
+
     return (
         <>
-            <h1>Devices Page</h1>
+            <Navbar/>
+            <h2>Devices</h2>
+
         </>
     )
 }

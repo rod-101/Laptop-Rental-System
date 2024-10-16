@@ -107,11 +107,12 @@ app.post('/count-requests/:owner', (req, res) => {
         if (result.rows.length > 0) {
             return res.send(result); //sends a json formatted response back to client
         } else {
-            return res.status(401).send('There are no devices.');
+            return res.status(401).send('There are no requests.');
         }
         
     })
 })
+
 app.get('/data/:id', (req, res) => {
     const {id} = req.params;
     dbclient.query(`SELECT * FROM users WHERE user_id = ${id}`, (err, result) => {
