@@ -1,13 +1,13 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import Profile from './Profile'
+import { UserContext } from './UserContext'
 const SERVER_URL = 'http://localhost:3001' //process.env.REACT_APP_SERVER_URL;
 
-export const UserDataContext = React.createContext()
-
 export default function Login(props) {
+    const { setUserData } = useContext(UserContext)
+
 
     const [loginMessage, setLoginMessage] = useState("")
-    const [userData, setUserData] = useState({}) //handle server response
     const [profile, setProfile] = useState(null)
     
     //handle user input
@@ -59,9 +59,7 @@ export default function Login(props) {
 
     if(profile) {
         return (
-            <UserDataContext.Provider value={userData}>
-                <Profile />
-            </UserDataContext.Provider>
+            <Profile />
         )
     } else {
         return (

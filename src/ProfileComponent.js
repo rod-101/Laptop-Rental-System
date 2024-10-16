@@ -1,16 +1,19 @@
-import React, { useState, useContext, useEffect } from "react"
-import { UserDataContext } from "./Login"
+import React, { useState, useContext, useEffect} from "react"
+import { UserContext } from "./UserContext"
+import { useNavigate } from 'react-router-dom'
 const SERVER_URL = 'http://localhost:3001'
 
 export default function ProfileComponent() {
+    const { userData } = useContext(UserContext)
+    const navigate = useNavigate()
+
     const [devicesCount, setDevicesCount] = useState(0)
     const [requestsCount, setRequestsCount] = useState(0)
-    const userData = useContext(UserDataContext)
     const username = userData.username;
     const email = userData.email;
     const user_type = userData.user_type;
     const owner = userData.user_id;
-   
+    
     const getRequestsCount = async () => {
         try{
             const response = await fetch(`${SERVER_URL}/count-requests/${owner}`, {
@@ -50,7 +53,8 @@ export default function ProfileComponent() {
     useEffect(() => {
         getDevicesCount()    
         getRequestsCount()
-    })
+        navigate('profile/lender/me')
+    }, [userData])
 
     return (
         <div id="container-lender">

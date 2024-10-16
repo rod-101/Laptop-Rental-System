@@ -1,29 +1,25 @@
 import React, { useContext, useState, useEffect} from "react";
-import { UserDataContext } from "./Login";
+import { UserContext } from "./UserContext";
 import LenderProfile from "./LenderProfile";
 import RenterProfile from "./RenterProfile";
+import { useNavigate } from 'react-router-dom'
 
 export default function Profile() {
-    const userDataRaw = useContext(UserDataContext);    
-    const [userData, setUserData] = useState(null);
-    // Effect to set userData only once when userDataRaw changes
+    const { userData } = useContext(UserContext);    
+    const navigate = useNavigate()
     useEffect(() => {
-        if (userDataRaw) {
-            setUserData(userDataRaw);
-        }
-    }, [userDataRaw]);
-
+        navigate('/profile')
+    }, [userData])
     // If userData isn't loaded yet, don't render profiles
     if (!userData) {
-        return <div>Loading...</div>;
+        return <div>Loading... from profile</div>;
     }
 
-    const userType = userData.user_type; // Now this should work
-
+    
     // Conditional rendering based on userType
-    if (userType === "Lender") {
-        return <LenderProfile />;
-    } else if (userType === "Renter") {
+    if (userData.user_type === "Lender") {
+        return <LenderProfile />
+    } else if (userData.user_type === "Renter") {
         return <RenterProfile />;
     } else {
         return <div>Invalid user type</div>;

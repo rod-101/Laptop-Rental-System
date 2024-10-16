@@ -8,12 +8,12 @@ import RenterProfile from './RenterProfile.js';
 
 function App() {
     return (
+        
         <div className="App">
             <BrowserRouter>
                 <Routes>
                     <Route index element={<Welcome/>} />
                     <Route path='/home' element={<Welcome/>} />
-
                     <Route path='/profile' element={<Profile/>} >
                         <Route path="lender" element={<LenderProfile/>}>
                             <Route path='add-device' element={<AddDevicePage/>} />
@@ -24,7 +24,7 @@ function App() {
                             {/* RenterProfile components here */}
                         </Route>
                     </Route>
-                    
+            
                 </Routes>
             </BrowserRouter>
         </div>
