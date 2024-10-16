@@ -1,10 +1,18 @@
 import Navbar from "./Navbar";
+import { useEffect } from 'react'
+import { useNavigate } from "react-router-dom";
 
 export default function Requests() {
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        navigate('/requests')
+    }, [navigate])
+    
     return(
         <>
             <Navbar/>
-            <h1>Requests Page</h1>            
+            <div className="container-lender">{}</div>
         </>
     )
 }

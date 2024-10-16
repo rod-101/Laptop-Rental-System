@@ -67,8 +67,8 @@ export default function ProfileComponent() {
             <div id="lender-info">
                 <h1>{username} ({user_type})</h1>
                 <p>{email}</p>
-                <p>{devicesCount} Devices</p>
-                <p>{requestsCount} Requests</p>
+                <p>{devicesCount} {devicesCount > 1 ? 'Devices' : 'Device'}</p>
+                <p>{requestsCount} {requestsCount > 1 ? 'Requests' : 'Request'}</p>
             </div>
         </div>
     )

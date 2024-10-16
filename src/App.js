@@ -2,7 +2,6 @@ import './App.css';
 import Welcome from './Welcome.js';
 import Profile from './Profile'
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
-import AddDevicePage from './AddDevicePage.js';
 import Devices from './Devices.js';
 import LenderProfile from './LenderProfile.js';
 import RenterProfile from './RenterProfile.js';
