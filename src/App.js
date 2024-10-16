@@ -7,6 +7,7 @@ import Devices from './Devices.js';
 import LenderProfile from './LenderProfile.js';
 import RenterProfile from './RenterProfile.js';
 import ProfileComponent from './ProfileComponent.js';
+import Requests from './Requests.js'
 
 function App() {
     return (
@@ -15,12 +16,13 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route index element={<Welcome/>} />
+
                     <Route path='/home' element={<Welcome/>} />
+                    <Route path='devices' element={<Devices />}/>
+                    <Route path='requests' element={<Requests/>}/>
                     <Route path='/profile' element={<Profile/>} >
                         <Route path="lender" element={<LenderProfile/>}>
                             <Route path='me' element={<ProfileComponent/>} />
-                            <Route path='devices' element={<Devices />}/>
-                            <Route path='requests'/>
                         </Route>
                         <Route path="renter" element={<RenterProfile/>}>
                             {/* RenterProfile components here */}

@@ -60,7 +60,7 @@ export default function ProfileComponent() {
     }, [getDevicesCount, getRequestsCount, navigate])
 
     return (
-        <div id="container-lender">
+        <div className="container-lender">
             <div className="profile-photo-container">
                 <img className="profile-photo" src={"./images/me.jpg"} alt={`${username}.jpg`} />
             </div>

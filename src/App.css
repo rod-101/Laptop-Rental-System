@@ -190,7 +190,7 @@
     text-decoration: none;
 }
 
-#container-lender {
+.container-lender {
     margin: auto;
     margin-top: 5rem;
     display: flex;

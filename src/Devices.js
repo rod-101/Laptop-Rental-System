@@ -6,14 +6,14 @@ export default function Devices() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        navigate('/profile/devices')
-    })
+        navigate('/devices')
+    }, [navigate])
 
     return (
         <>
             <Navbar/>
-            <h2>Devices</h2>
-
+            <h1>Devices Page</h1>
+            <div className="container-lender">Data goes here.</div>
         </>
     )
 }

@@ -59,7 +59,7 @@ app.post('/add-device', (req, res) => {
     })
 })
 
-
+//check on signup
 app.get('/emailIsAvailable', (req, res) => {
     const {email} = req.query
 
