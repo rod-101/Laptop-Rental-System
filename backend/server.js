@@ -45,12 +45,23 @@ app.post('/signup', (req, res) => {
     })
 })
 
+app.post('/my-devices', (req, res) => {
+    const { owner } = req.body
+    const queryString = 'SELECT model, device_name, device_id FROM devices WHERE "owner" = $1'
+    dbclient.query(queryString, [owner], (err, result) => {
+        if(err) {
+            console.log(err)
+            return res.status(500).send('Error querying the database.')
+        }
+        return res.send(result)
+    })
+})
 
 app.post('/add-device', (req, res) => {
-    const {device_name, specs, condition, availability, apps, issues, terms_conditions} = req.body
+    const {owner, device_name, model, specs, condition, availability, apps, issues, terms_conditions} = req.body
 
-    const queryString = 'INSERT INTO devices (device_name, specs, condition, availability, apps, issues, terms_conditions) VALUES ($1, $2, $3, $4, $5, $6, $7)'
-    dbclient.query(queryString, [device_name, specs, condition, availability, apps, issues, terms_conditions], (err, result) => {
+    const queryString = 'INSERT INTO devices (owner, device_name, model, specs, condition, availability, apps, issues, terms_conditions) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)'
+    dbclient.query(queryString, [owner, device_name, model, specs, condition, availability, apps, issues, terms_conditions], (err, result) => {
         if(err){
             console.log(err)
             return res.status(500).send('Error querying the database.')

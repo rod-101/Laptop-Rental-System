@@ -11,7 +11,6 @@ export default function LenderProfile() {
     useEffect(() => {
         navigate('/lender') //test removing this since, /lender doesn't show up in the address bar anyway
 
-        console.log('navigated to /lender.')
         // Only navigate if a condition is met, e.g., userData is not loaded
         if (!userData) {
             navigate('/profile');  // Navigate somewhere if necessary

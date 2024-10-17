@@ -5,7 +5,6 @@ import RenterProfile from "./RenterProfile";
 import { useNavigate } from 'react-router-dom'
 
 export default function Profile() {
-    console.log("youre on profile component")
     const { userData } = useContext(UserContext);    
     const navigate = useNavigate()
     

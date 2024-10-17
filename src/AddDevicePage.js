@@ -1,11 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react'
-const SERVER_URL = process.env.REACT_APP_SERVER_URL
+import React, { useContext, useEffect, useRef, useState } from 'react'
+import { UserContext } from './UserContext'
+const SERVER_URL = 'http://localhost:3001' || process.env.REACT_APP_SERVER_URL
 
 export default function AddDeviceComponent() {
+    const { userData } = useContext(UserContext)
     const [pageMessage, setPageMessage] = useState(null)
     const [resetInput, setResetInput] = useState(false)
     const [input, setInput] = useState({
+        owner: userData.user_id,
         device_name: null,
+        model: null,
         specs: null,
         condition: null,
         availability: null,
@@ -15,6 +19,7 @@ export default function AddDeviceComponent() {
     })
 
     const device_nameRef = useRef(null)
+    const modelRef = useRef(null)
     const specsRef = useRef(null)
     const conditionRef = useRef(null)
     const availabilityRef = useRef(null)
@@ -25,7 +30,9 @@ export default function AddDeviceComponent() {
     useEffect(() => {
         if(resetInput) {
             setInput({
+                owner: userData.user_id,
                 device_name: null,
+                model: null,
                 specs: null,
                 condition: null,
                 availability: null,
@@ -36,20 +43,20 @@ export default function AddDeviceComponent() {
         }
         setResetInput(false)
         device_nameRef.current.value = ""
+        modelRef.current.value = ""
         specsRef.current.value = ""
         conditionRef.current.value = ""
         availabilityRef.current.value = ""
         appsRef.current.value = ""
         issuesRef.current.value = ""    
         terms_conditionsRef.current.value = ""    
-    }, [resetInput]) 
+    }, [resetInput, userData.user_id]) 
 
     useEffect(() => {
         if (pageMessage) {
             const timer = setTimeout(() => {
                 setPageMessage(null);
             }, 3000);
-    
             return () => clearTimeout(timer);
         }
     }, [pageMessage]);
@@ -66,6 +73,7 @@ export default function AddDeviceComponent() {
         setPageMessage ('Adding...')
         console.log(pageMessage)
         try {
+            console.log("here!!!" + input)
             const response = await fetch(`${SERVER_URL}/add-device`, {
                 method: "POST",
                 headers: {
@@ -99,9 +107,11 @@ export default function AddDeviceComponent() {
 
                     <label><h3>Device name:</h3></label>
                     <input type='text' ref={device_nameRef} name='device_name' placeholder='e.g. Rod-Laptop' onChange={handleInputChange} required/>
+                    <label><h3>Model:</h3></label>
+                    <input type='text' ref={modelRef} name='model' placeholder='e.g. Lenovo V15 Gen4' onChange={handleInputChange} required/>
                     <label htmlFor="device-specs">
                         <h3>Enter Laptop Specifications:</h3>
-                        Please include: model, OS, processor, storage and RAM
+                        Please include: OS, processor, storage and RAM
                     </label>
                     <textarea id="specs" ref={specsRef} name="specs" placeholder="Put them in a comma-separated list." onChange={handleInputChange} required />
 
@@ -124,12 +134,14 @@ export default function AddDeviceComponent() {
                         <input type="radio" ref={availabilityRef} id="unavailable" name="availability" value="Unavailable" onChange={handleInputChange} required checked={input.availability === 'Unavailable'}/>
                         <label htmlFor="unavailable">Unavailable</label>
                     </div>
-                    <label htmlFor="installed-apps"><h3>Installed Applications:</h3></label>
-                    <textarea id="installed-apps" ref={appsRef} name="apps" placeholder=" e.g. VS Code, Sublime, pgAdmin 4, PowerPoint, Word..." onChange={handleInputChange} required/>
+                   
 
                 </div>
 
                 <div id="div-right">
+                    <label htmlFor="installed-apps"><h3>Installed Applications:</h3></label>
+                    <textarea id="installed-apps" ref={appsRef} name="apps" placeholder=" e.g. VS Code, Sublime, pgAdmin 4, PowerPoint, Word..." onChange={handleInputChange} required/>
+
                     <label htmlFor="issues"><h3>Issues</h3></label>
                     <textarea id="issues" ref={issuesRef} name="issues" placeholder="e.g. Minor lcd damage, short battery life... Type 'None' if there are no issues." onChange={handleInputChange} required/>
                     

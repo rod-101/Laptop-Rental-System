@@ -7,6 +7,7 @@ import LenderProfile from './LenderProfile.js';
 import RenterProfile from './RenterProfile.js';
 import ProfileComponent from './ProfileComponent.js';
 import Requests from './Requests.js'
+import AddDeviceComponent from './AddDevicePage.js';
 
 function App() {
     return (
@@ -17,7 +18,8 @@ function App() {
                     <Route index element={<Welcome/>} />
 
                     <Route path='/home' element={<Welcome/>} />
-                    <Route path='devices' element={<Devices />}/>
+                    <Route path='/devices' element={<Devices />}/>
+                    <Route path='add-a-device' element={<AddDeviceComponent/>}/>                       
                     <Route path='requests' element={<Requests/>}/>
                     <Route path='/profile' element={<Profile/>} >
                         <Route path="lender" element={<LenderProfile/>}>
