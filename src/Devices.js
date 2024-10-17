@@ -64,7 +64,7 @@ export default function Devices() {
                             />
                         ))
                     ) : (
-                        <span style={{width: "200px", margin: "auto", marginTop: "170px"}}>"Wow, such empty!"</span>
+                        <span style={{width: "200px", margin: "auto", marginTop: "170px"}}>Wow, such empty!</span>
                     )}
                     
                 </div>
