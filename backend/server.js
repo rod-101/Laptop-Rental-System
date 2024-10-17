@@ -89,7 +89,6 @@ app.get('/emailIsAvailable', (req, res) => {
     })
 })
 
-
 app.post('/count-devices/:owner', (req, res) => {
     const owner = req.params.owner;
     const queryString = `SELECT device_id FROM devices WHERE "owner" = $1`
@@ -122,6 +121,24 @@ app.post('/count-requests/:owner', (req, res) => {
             return res.status(401).send('There are no requests.');
         }
         
+    })
+})
+
+app.post('/requests', (req, res) => {
+    const {owner} = req.body
+
+    const queryString = `
+        SELECT requests.*, users.username
+        FROM requests
+        INNER JOIN users ON requests.requester = users.user_id
+        WHERE "owner" = $1
+    `;
+
+    dbclient.query(queryString, [owner], (err, result) => {
+        if(err) {
+            return res.status(500).send("Internal Server Error") 
+        }
+        res.status(200).send(result.rows)
     })
 })
 

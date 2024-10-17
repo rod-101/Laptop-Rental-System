@@ -202,7 +202,7 @@
     height: 540px;
     color: white;
 }
-.container-devices {
+.container-devices, .container-requests{
     position: relative;
     margin: auto;
     margin-top: 5rem;
@@ -211,7 +211,7 @@
     height: 540px;
     background-color: #272727;
     color: white;
-} .container-devices > h1 {
+} .container-devices > h1, .container-requests > h1 {
     box-sizing: border-box;
     padding: 2rem;
     margin: 0px;
@@ -239,7 +239,16 @@
     left: 50%;
     transform: translateX(-50%)
 }
-
+/* .container-requests {
+    position: relative;
+    margin: auto;
+    margin-top: 5rem;
+    box-sizing: border-box;
+    width: 885px;
+    height: 540px;
+    background-color: #272727;
+    color: white;
+} */
 /* .add-a-device {
     width: 7rem;
     height: 2rem;
@@ -286,4 +295,36 @@
 .card-device-info {
     font-size: 1.3rem;
     text-align: left;
+}
+
+
+.request-ui {
+    background-color: white;
+    color: black;
+    text-align: left;
+    font-size: 14px;
+    border-radius: 0px 30px 30px 30px;
+    box-sizing: border-box;
+    padding: 15px 30px 15px 30px;
+} .request-component-head {
+    font-size: 22px;
+} .image-requester {
+    background-color: pink;
+    width: 110px;
+    height: 135px;
+} .request-component {
+    /* background-color: green; */
+    display: flex;
+    column-gap: 2rem;
+    align-items: center;
+    padding-left: 3rem;
+    margin-bottom: 2rem;
+} .approve-button {
+    background-color: #839A77;
+    width: 91px;
+    height: 38px;
+    border: none;
+    border-radius: 5px;
+} .approve-button:hover {
+    background-color: #6f8165;
 }

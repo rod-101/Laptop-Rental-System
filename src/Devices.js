@@ -44,11 +44,6 @@ export default function Devices() {
         getDevices()
     }, [navigate, getDevices])
 
-    useEffect(() => {
-        console.log('current device state' + devices)
-    }, [devices])
-
-
     return (
         <>
             <Navbar/>
