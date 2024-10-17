@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect, useCallback} from "react"
 import { UserContext } from "./UserContext"
 import { useNavigate } from 'react-router-dom'
-const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:3001' 
+const SERVER_URL = 'http://localhost:3001' 
 
 export default function ProfileComponent() {
     const { userData } = useContext(UserContext)

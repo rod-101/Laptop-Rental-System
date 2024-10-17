@@ -27,10 +27,9 @@ function App() {
                             <Route path='me' element={<ProfileComponent/>} />
                         </Route>
                         <Route path="renter" element={<RenterProfile/>}>
-                            {/* RenterProfile components here */}
+                            <Route path='me' element={<ProfileComponent/>}/>
                         </Route>
-                    </Route>
-            
+                    </Route>            
                 </Routes>
             </BrowserRouter>
         </div>

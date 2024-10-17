@@ -1,19 +1,29 @@
-// import React, { useContext } from 'react'
-// import { UserDataContext } from './Login'
+import Navbar from './Navbar'
+import React, {  useContext, useEffect} from "react"
+import { useNavigate } from 'react-router-dom'
+import { UserContext } from "./UserContext"
+import ProfileComponent from './ProfileComponent'
 
-export default function RenterProfile(props) {
-    // const userData = useContext(UserDataContext)    
-    // const username = userData.username
-    // const user_id = userData.user_id
-    // const user_type = userData.user_type
+export default function RenterProfile() {
+    const {userData} = useContext(UserContext)
+    const navigate = useNavigate()
+    
+    useEffect(() => {
+        navigate('/renter') //test removing this since, /lender doesn't show up in the address bar anyway
+
+        // Only navigate if a condition is met, e.g., userData is not loaded
+        if (!userData) {
+            navigate('/profile');  // Navigate somewhere if necessary
+        }
+    }, [navigate, userData]);
+        
+
 
     return (
         <>
-            {/* <div>This is a renter profile</div>
-            <div>Username: {username}</div>
-            <div>UserID: {user_id}</div>
-            <div>Role: {user_type}</div>
-            <h1>Rent a Laptop</h1> */}
+            <Navbar/>
+            <ProfileComponent/>
         </>
     )
+    
 }
