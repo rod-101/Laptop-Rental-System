@@ -68,7 +68,7 @@ export default function Devices() {
                     )}
                     
                 </div>
-                <Link to="/add-a-device"><button className='add-a-device'>Add</button></Link>
+                <Link to="/add-a-device"><button className='devices-buttons'>Add</button></Link>
             </div>
         </>
     )

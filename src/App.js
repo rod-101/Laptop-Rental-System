@@ -8,11 +8,12 @@ import RenterProfile from './RenterProfile.js';
 import ProfileComponent from './ProfileComponent.js';
 import Requests from './Requests.js'
 import AddDeviceComponent from './AddDevicePage.js';
+import GlobalStyle from './GlobalStyle';
 
 function App() {
     return (
-        
         <div className="App">
+            <GlobalStyle/>
             <BrowserRouter>
                 <Routes>
                     <Route index element={<Welcome/>} />

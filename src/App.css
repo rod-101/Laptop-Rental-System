@@ -223,7 +223,12 @@
     flex-wrap: wrap;
     display: flex;
     column-gap: 2rem;
-} .add-a-device {
+} .devices-buttons-container {
+    width: 250px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+} .devices-buttons {
     width: 7rem;
     height: 2rem;
     font-size: 1.3rem;
@@ -233,7 +238,21 @@
     bottom: 1rem;
     left: 50%;
     transform: translateX(-50%)
-} .add-a-device:hover {
+}
+
+/* .add-a-device {
+    width: 7rem;
+    height: 2rem;
+    font-size: 1.3rem;
+    border-radius: 1rem;
+    border: none;
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%)
+}  */
+
+.add-a-device:hover {
     background-color: rgb(200, 200, 200);
 }
 .profile-photo-container{

@@ -2,6 +2,7 @@
 export default function DeviceCard(props) {
     const model = props.model
     const device_name = props.device_name
+    const device_id = props.key
 
     return (
         <>
@@ -11,7 +12,7 @@ export default function DeviceCard(props) {
                 </div>
                 <div className="card-device-info">
                     <div>{model ? model : 'Default_Laptop_Model'}</div>
-                    <div>{device_name ? device_name : 'Laptop_Name'}</div>
+                    <div>{device_name ? device_name : 'Laptop_Name'} ({device_id})</div>
                 </div>
             </div>
         </>
