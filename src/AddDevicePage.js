@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { UserContext } from './UserContext'
-const SERVER_URL = 'http://localhost:3001' 
+const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:3001' 
 
 export default function AddDeviceComponent() {
     const { userData } = useContext(UserContext)

@@ -9,6 +9,8 @@ import ProfileComponent from './ProfileComponent.js';
 import Requests from './Requests.js'
 import AddDeviceComponent from './AddDevicePage.js';
 import GlobalStyle from './GlobalStyle';
+import Feed from './Feed.js'
+import Pending from './Pending.js'
 
 function App() {
     return (
@@ -29,7 +31,9 @@ function App() {
                         <Route path="renter" element={<RenterProfile/>}>
                             <Route path='me' element={<ProfileComponent/>}/>
                         </Route>
-                    </Route>            
+                    </Route>     
+                    <Route path='/feed' element={<Feed/>}/>       
+                    <Route path='/pending' element={<Pending/>}/>       
                 </Routes>
             </BrowserRouter>
         </div>

@@ -1,12 +1,10 @@
-// import React, { useContext } from "react"
-// import { UserDataContext } from "./Login"
 import { Link } from "react-router-dom"
 
 export default function Navbar() {
-    // const userData = useContext(UserDataContext)
 
     return (
         <>
+            this is "Navbar"
             <div id="navbar">
                 <Link to="/profile">
                     <div>Profile</div>
@@ -16,6 +14,24 @@ export default function Navbar() {
                 </Link>
                 <Link to="/devices">
                     <div>Devices</div>
+                </Link>
+            </div>
+        </>
+    )
+}
+
+export function NavbarRenter() {
+    return (
+        <>
+            <div id="navbar-renter">
+                <Link to="/profile">
+                    <div>Profile</div>
+                </Link>
+                <Link to="/feed">
+                    <div>Feed</div>
+                </Link>
+                <Link to="/pending">
+                    <div>Pending</div>
                 </Link>
             </div>
         </>

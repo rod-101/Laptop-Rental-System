@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import { useCallback, useContext, useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "./UserContext";
-const SERVER_URL = 'http://localhost:3001'
+const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:3001'
 
 export default function Requests() {
     const navigate = useNavigate()

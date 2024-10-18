@@ -1,8 +1,8 @@
-import Navbar from './Navbar'
+import {NavbarRenter} from './Navbar'
 import React, {  useContext, useEffect} from "react"
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from "./UserContext"
-import ProfileComponent from './ProfileComponent'
+import ProfileComponentRenter from './ProfileComponentRenter'
 
 export default function RenterProfile() {
     const {userData} = useContext(UserContext)
@@ -21,8 +21,10 @@ export default function RenterProfile() {
 
     return (
         <>
-            <Navbar/>
-            <ProfileComponent/>
+            <div id='renter-profile-page'>
+                <NavbarRenter/>
+                <ProfileComponentRenter/>
+            </div>
         </>
     )
     

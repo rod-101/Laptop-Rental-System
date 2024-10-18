@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 import DeviceCard from "./DeviceCard";
 // import AddDeviceComponent from './AddDevicePage';
 // import AddDeviceComponent from './AddDevicePage';
-const SERVER_URL = 'http://localhost:3001' 
+const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:3001' 
 
 export default function Devices() {
     const { userData } = useContext(UserContext)

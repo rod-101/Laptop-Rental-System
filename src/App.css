@@ -328,3 +328,124 @@
 } .approve-button:hover {
     background-color: #6f8165;
 }
+
+#navbar-renter div:hover {
+    background-color: #272727;
+    color: white;
+} #navbar-renter {
+    width: 282px;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    right: 1rem;
+    top: 1rem;
+    border-radius: 0px 0px 0px 10px;
+    font-size: 20px;
+    align-items: center;
+} #navbar-renter div {
+    color: #272727;
+    height: 40px;
+    width: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+#navbar-renter * {
+    text-decoration: none;
+    color: #272727;
+}
+#profileComponent-container {
+    width: 754px;
+    height: 472px;
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    background-color: #f3f3f3;
+} 
+.renter-header {
+    font-size: 1.5rem;
+    margin: 2rem;
+}
+#profileComponent-img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 1px solid grey;
+    width: 319px;
+    background-color: white;
+    height: 472px;
+    min-width: 300px;
+}
+#profileComponent-info {
+    min-width: 300px;
+    padding: 2rem;
+    text-align: left;
+} #profileComponent-info div {
+    margin-bottom: 1rem;
+}
+#renterName {
+    font-size: 25px;
+}
+
+#feedComponent-container {
+    width: 1144px;
+    height: 514px;
+    background-color: #F3F3F3;
+    position:absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#productCard-feed {
+    width: 243px;
+    height: 203px;
+    box-sizing: border-box;
+}
+#productCard-img {
+    width: 243px;
+    height: 142px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#productCard-model {
+    text-align: left;
+    font-size: 1.2rem;
+    position: relative;
+    width: 243px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+#productCard-footer {
+    width: 243px;
+    height: 30px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 1.1rem;
+    position: relative;
+    bottom: 0px;
+}
+#productCard-info {
+    display: flex;
+    flex-direction: column;
+}
+
+#header-feed {
+
+}
+.product-card-hover:hover {
+    cursor: pointer;
+}

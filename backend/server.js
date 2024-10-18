@@ -142,6 +142,22 @@ app.post('/requests', (req, res) => {
     })
 })
 
+app.get('/feed', (req, res) => {
+    const queryString = 'SELECT * FROM products'
+    dbclient.query(queryString, (err, result) => {
+        if (err) {
+            console.log(err)
+            return res.status(500).send('Error querying the database')
+        }
+
+        if(result.rows.length > 0) {
+            return res.send(result.rows)
+        } else {
+            return res.status(404).send('Not Found.')
+        }
+    })
+})
+
 app.get('/data/:id', (req, res) => {
     const {id} = req.params;
     dbclient.query(`SELECT * FROM users WHERE user_id = ${id}`, (err, result) => {
